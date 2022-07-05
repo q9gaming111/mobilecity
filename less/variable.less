@@ -1,0 +1,80 @@
+.transform(@args){
+   -webkit-transform: @args;
+   -moz-transform: @args;
+   -ms-transform: @args;
+   -o-transform: @args;
+   transform: @args;
+}
+.translate(@args1,@args2){
+   -webkit-transform: translate(@args1,@args2);
+   -moz-transform: translate(@args1,@args2);
+   -ms-transform: translate(@args1,@args2);
+   -o-transform: translate(@args1,@args2);
+   transform: translate(@args1,@args2);
+}
+ .translateX(@args){
+   -webkit-transform: translateX(@args);
+   -moz-transform: translateX(@args);
+   -ms-transform: translateX(@args);
+   -o-transform: translateX(@args);
+   transform: translateX(@args);
+}
+.translateY(@args){
+   -webkit-transform: translateY(@args);
+   -moz-transform: translateY(@args);
+   -ms-transform: translateY(@args);
+   -o-transform: translateY(@args);
+   transform: translateY(@args);
+}
+// Transitions
+.transition(@args) {
+   -webkit-transition: @args;
+   -moz-transition: @args;
+   -ms-transition: @args;
+   -o-transition: @args;
+   transition: @args;
+}
+.animation(@args){
+  animation: @args;
+  -webkit-animation: @args;
+  -moz-animation: @args;
+  -ms-animation: @args;
+}
+// Flexbox display
+.flex(@display: flex) {
+  display: ~"-webkit-@{display}";
+  display: ~"-ms-@{display}box";
+  display: ~"-ms-@{display}";
+  display: @display;
+}
+.flex-wrap(@wrap: nowrap) {
+  -webkit-flex-wrap: @wrap;
+      -ms-flex-wrap: @wrap;
+          flex-wrap: @wrap;
+}
+.order(@order) {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: @order;
+      order: @order;
+}
+.justify-content(@justify: flex-start) {
+  -webkit-justify-content: @justify;
+      -ms-justify-content: @justify;
+          justify-content: @justify;
+}
+.align-content(@align: stretch) {
+  -webkit-align-content: @align;
+      -ms-align-content: @align;
+          align-content: @align;
+}
+.align-items(@align: stretch) {
+  -webkit-align-items: @align;
+      -ms-align-items: @align;
+          align-items: @align;
+}
+.flex-direction(@direction) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: @direction;
+  flex-direction: @direction;
+}
