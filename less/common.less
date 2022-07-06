@@ -2,20 +2,44 @@
 :root {
 	--font-OpenSans: 'Open Sans', sans-serif;
 	--font-Yantramanav: 'Yantramanav', sans-serif;
-	--color-gray: #ddd9d1;
-	--color-lightgray: #cccccc;
-	--color-orange: #f39200;
-	--color-primary: #484848;
-	--font-title: 18px;
-	--font-primary: 14px;
-	--font-sliderCaption: 26px;
+	--color-red: #da2128;
+	--color-primary: #111111;
+	--font-title: 22px;
+	--font-primary: 13px;
+	@media(min-width: 1024px) {
+		--font-primary: 15px;
+		--font-title: 36px;
+	}
 }
-
+body {
+	font-size: var(--font-primary);
+	font-family: var(--font-Yantramanav);
+	line-height: 1.47em;
+	color: var(--color-primary);
+}
 .container {
 	max-width: 1440px;
 	margin-inline: auto;
-	padding: 0px 15px;
+	padding: 0px 10px;
 	@media(min-width: 1024px){
 		padding: 0px 30px;
+	}
+	&-large {
+		max-width: 100%;
+	}
+}
+.overlay {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.3);
+	.open-search & {
+		@media(max-width: 767px) {
+			display: block;
+		}
 	}
 }
