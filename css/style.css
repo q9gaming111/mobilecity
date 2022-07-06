@@ -1222,7 +1222,7 @@ footer .footer-col--info ul li:last-of-type {
 }
 footer .footer-col--info ul li a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   color: #fff;
   font-family: var(--font-OpenSans);
