@@ -1,15 +1,4 @@
-const initBannerSlider = function(){
-	const $bannerSlider = $('.banner-slider .slider');
-	const sliderSetting = {
-		fade: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 2500,
-		cssEase: 'linear'
-	}
 
-	$bannerSlider.length > 0 && $bannerSlider.slick(sliderSetting);
-}
 const handCollapseItem = function(){
 	const collapseBtn = $('[collapse-content] [collapse-btn]');
 
@@ -17,37 +6,41 @@ const handCollapseItem = function(){
 		e.preventDefault();
 
 		const _this = $(this);
-		const collapseItem = _this.closest('[collapse-content]').find('[collapse-item]');
 		const collapseItemActive = _this.closest('[collapse-item]');
 
-		collapseItem.removeClass('expand')
-		collapseItemActive.addClass('expand')
+		collapseItemActive.toggleClass('active')
 	})
 }
 const handleNavEvent = function() {
-	const btnBar = $('.header .bars');
-	const header = $('header');
-	const btnExpandSubMenu = $('[has-nav-sub] .icon-expand');
+	const btnMenu = $('.header .btn-toggle-menu');
+	const body = $('body');
+	const btnToggleSubNav = $('.mobile-nav [has-sub-nav] .icon-explore, .mobile-nav .btn-back');
+	const btnOpenSearchBox  = $('.header .search-btn, .header .btn-close-search');
 
-	btnBar.on('click', function(e) {
+	btnMenu.on('click', function(e) {
 		e.preventDefault();
 
-		header.toggleClass('nav-open')
+		body.toggleClass('nav-open')
 	});
 
-	btnExpandSubMenu.on('click', function(e){
+	btnToggleSubNav.on('click', function(e){
 		e.preventDefault();
 
-		const parent = $(this).closest('[has-nav-sub]');
-		parent.attr('has-nav-sub', parent.attr('has-nav-sub') === 'open' ? '' : 'open' )
+		const parent = $(this).closest('[has-sub-nav]');
+		parent.attr('has-sub-nav', parent.attr('has-sub-nav') === 'open' ? '' : 'open' )
 
+	});
+
+	btnOpenSearchBox.on('click', function(e){
+		e.preventDefault();
+
+		body.toggleClass('open-search');
 	})
 }
 const initial = function() {
 	// excute function here
 	handleNavEvent();
 	handCollapseItem();
-	initBannerSlider();
 }
 
 document.addEventListener('DOMContentLoaded', function(){
