@@ -1,4 +1,46 @@
+const initBannerSlider = function(){
+	const $bannerSlider = $('.banner-slider .slider');
+	const sliderSetting = {
+		arrows: true,
+		autoplay: true,
+		prevArrow: $('.banner-slider .arrow-left a') ,
+		nextArrow: $('.banner-slider .arrow-right a') 
+	}
 
+	$bannerSlider.length > 0 && $bannerSlider.slick(sliderSetting);
+}
+
+const initBlogSlider = function(){
+	const $blogSlider = $('.lastest-blog .blog-slider');
+	const sliderSetting = {
+		arrows: true,
+		autoplay: true,
+		prevArrow: $('.lastest-blog .arrow-left a') ,
+		nextArrow: $('.lastest-blog .arrow-right a'),
+		responsive: [
+			{
+		      	breakpoint: 1920,
+		      	settings: "unslick"
+		    },
+			{
+		      	breakpoint: 1023,
+		      	settings: {
+			        slidesToShow: 2,
+			        slidesToScroll: 1,
+			      }
+		    },
+		    {
+		      	breakpoint: 767,
+		      	settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			      }
+		    }
+		]
+	}
+
+	$blogSlider.length > 0 && $blogSlider.slick(sliderSetting);
+}
 const handCollapseItem = function(){
 	const collapseBtn = $('[collapse-content] [collapse-btn]');
 
@@ -41,6 +83,8 @@ const initial = function() {
 	// excute function here
 	handleNavEvent();
 	handCollapseItem();
+	initBannerSlider();
+	initBlogSlider();
 }
 
 document.addEventListener('DOMContentLoaded', function(){
