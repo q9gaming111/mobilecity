@@ -19,7 +19,7 @@ const initBlogSlider = function(){
 		nextArrow: $('.lastest-blog .arrow-right a'),
 		responsive: [
 			{
-		      	breakpoint: 1920,
+		      	breakpoint: 2500,
 		      	settings: "unslick"
 		    },
 			{
