@@ -1,1 +1,80 @@
 //---------------------------------------HOME PAGE STYLE
+.slider-wrap {
+	position: relative;
+	.arrows-icon {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		a {
+			display: inline-block;
+			padding: 13px;
+			background-color: #fff;
+			box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+			border-radius: 50%;
+			img {
+				max-width: 24px;
+			}
+		}
+		&.arrow-left {
+			left: 20px;
+		}
+		&.arrow-right {
+			right: 20px;
+		}
+	}
+}
+.banner-slider {
+	.slider {
+		&-wrap {
+			position: relative;
+		}
+		&-item {
+			&--wrap {
+				position: relative;
+			}
+			.content {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				text-align: center;
+				.item {
+					&-text {
+						font-size: 18px;
+						line-height: 1.35em;
+						color: var(--color-primary);
+						font-weight: 300;
+					}
+					&-title {
+						margin-bottom: 15px;
+						font-size: 32px;
+						line-height:1.45em;
+						color: var(--color-primary);
+						font-weight: 300;
+					}
+					a {
+
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 768px){
+		.slider {
+			&-item {
+				.content {
+					.item {
+						&-text {
+							margin-bottom: 10px;
+							font-size: 36px;
+						}
+						&-title {
+							margin-bottom: 60px;
+							font-size: 55px;
+							font-weight: 300;
+						}
+					}
+				}
+			}
+		}
+	}
+}
