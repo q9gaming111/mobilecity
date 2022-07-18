@@ -5,10 +5,12 @@
 	--color-red: #da2128;
 	--color-primary: #111111;
 	--font-title: 22px;
+	--font-bannerTitle: 26px;
 	--font-primary: 13px;
 	@media(min-width: 1024px) {
 		--font-primary: 15px;
 		--font-title: 36px;
+		--font-bannerTitle: 40px;
 	}
 }
 body {
@@ -70,6 +72,49 @@ body {
 	@media(min-width: 1024px) {
 		h3 {
 			font-size: 	36px;
+		}
+	}
+}
+.device-hidden {
+	@media(max-width: 1023px) {
+		display: none;
+	}
+}
+.break-crumb {
+	padding: 18px 0px;
+	ul {
+		display: flex;
+		li {
+			font-size: 12px;
+			color: var(--color-primary);
+			line-height: 1.33;
+			font-family: var(--font-OpenSans);
+			a {
+				color: inherit;
+				font-size: inherit;
+				font-family: inherit;
+			}
+			&::after {
+				display: inline-block;
+				content: "/";
+				margin: 0px 10px;
+				color: #999;
+			}
+			&:last-of-type {
+				color: #999;
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+	@media(min-width: 768px) {
+		ul {
+			li {
+				&::after {
+					margin: 0px 20px;
+				}
+			}
 		}
 	}
 }

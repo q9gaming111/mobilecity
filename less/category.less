@@ -1,0 +1,116 @@
+//---------------------- CATEGORY PAGE STYLE
+//-------- CATE INTRO
+.cate-intro {
+	border-top: 3px solid var(--color-primary);
+	padding-top: 12px;
+	.intro-content {
+		.title {
+			margin-bottom: 10px;
+			font-size: var(--font-bannerTitle);
+			color: var(--color-primary);
+			line-height: 1.15em;
+			font-weight: 300;
+			font-family: var(--font-Yantramanav);
+		}
+		.image {
+			margin-bottom: 15px;
+		}
+		.content {
+			p {
+				font-size: 15px;
+				margin-bottom: 10px;
+				font-family: var(--font-OpenSans);
+				.read-more {
+					font-family: inherit;
+					color: var(--color-red);
+				}
+			}
+		}
+	}
+	@media(min-width: 768px) {
+		padding-top: 20px;
+		.title {
+			margin-bottom: 25px;
+		}
+		.image {
+			margin-bottom: 20px;
+		}
+		.content {
+			margin-bottom: 20px;
+		}
+	}
+	@media(min-width: 1024px) {
+		border-top: 0px;
+		padding-top: 0px;
+	}
+}
+
+//-------- CATE DEVICES
+.cate-device {
+	position: relative;
+	margin-bottom: 20px;
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 50px;
+		background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,1) 100%);
+	}
+	&--wrap {
+		position: relative;
+		padding-bottom: 10px;
+		overflow-y: auto;
+		border-bottom: 1px solid #ccc;
+	}
+	ul {
+		display: flex;
+		min-width: 950px;
+		align-items: center;
+		li {
+			margin-right: 10px;
+			font-size: 13px;
+			color: var(--color-primary);
+			font-family: var(--font-OpenSans);
+			a {
+				display: inline-block;
+				padding: 10px;
+				border-radius: 5px;
+				background-color: #f2f2f2;
+				color: inherit;
+				font-size: inherit;
+				font-family: inherit;
+				line-height: 1.15em;
+				font-weight: 400;
+			}
+		}	
+	}
+	@media(min-width: 768px) {
+		ul {
+			li {
+				margin-right: 15px;
+			}
+		}
+	}
+	@media(min-width: 1024px) {
+		margin-bottom: 60px;
+		&--wrap {
+			padding: 10px 0px;
+			border-top: 1px solid #ccc;
+		}
+		ul {
+			min-width: 1300px;
+			li {
+				font-size: 15px;
+				a {
+					padding: 10px 15px;
+				}
+				&:first-of-type {
+					margin-right: 30px;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
