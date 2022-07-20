@@ -806,16 +806,16 @@
 			<!-- End break crumb -->
 			<section class="product-detail">
 				<div class="container">
-					<div class="product-detail--wrap">
-						<div class="content-top">
+					<div class="product-detail--wrap clr">
+						<div class="content content-top">
 							<div class="content-wrap">
 								<div class="product-title">
 									<div class="product-title--wrap">
-										<img src="" alt="">
+										<img src="../images/samsung-logo.png" alt="">
 										<h2>Samsung Galaxy A12 (6.5'', 128GB/4GB, 5000 mAh) - Black</h2>
 									</div>
 								</div>
-								<div class="product-sku">SKU: 414467</div>
+								<div class="product-sku">SKU: <span class="product-sku--number">414467</span></div>
 								<div class="write-review">
 									<div class="write-review--wrap">
 										<p class="stars">
@@ -827,7 +827,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="content-middle">
+						<div class="content content-middle">
 							<div class="content-wrap">
 								<div class="product-img-slider">
 									<div class="main-slider">
@@ -870,55 +870,42 @@
 										</div>
 									</div>
 								</div>
-								<div class="recommend-slider">
-									<h3 class="slider-title">You Might Also Like</h3>
-									<div class="recommend-slider--wrap">
-										<div class="slider-item">
-											<div class="slider-item--wrap"></div>
-										</div>
-										<div class="slider-item">
-											<div class="slider-item--wrap"></div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
-						<div class="content-bottom">
+						<div class="content content-bottom">
 							<div class="content-wrap">
 								<div class="product-icon">
 									<ul>
 										<li>
 											<img src="../images/screen.png" alt="">
-											<h4>6.5</h4>
-											<p>Inches</p>
+											<p><b>6.5</b>Inches</p>
 										</li>
 										<li>
 											<img src="../images/storage.png" alt="">
-											<h4>128GB</h4>
-											<p>Storage</p>
+											<p><b>128GB</b>Storage</p>
 										</li>
 										<li>
 											<img src="../images/pixels.png" alt="">
-											<h4>48</h4>
-											<p>Storage</p>
+											<p><b>48</b>Storage</p>
 										</li>
 										<li>
 											<img src="../images/battery.png" alt="">
-											<h4>5000</h4>
-											<p>mAh</p>
+											<p><b>5000</b>mAh</p>
 										</li>
 									</ul>
 								</div>
 								<div class="product-tags">
 									<ul>
-										<li><a href="">Brand New</a></li>
+										<li>
+											<a><i class="fa fa-tag"></i>Brand New</a>
+										</li>
 									</ul>
 								</div>
 								<div class="product-price">
 									<div class="product-price--wrap">
 										<div class="pricing">
 											<div class="pricing-wrap">
-												<p class="full-price">Brand New</p>
+												<p class="full-price">$2,930.00</p>
 												<p class="discount-price">$2,299.00</p>
 											</div>
 										</div>
@@ -926,22 +913,35 @@
 											<div class="status-bar">
 												<span></span><span></span><span></span><span></span><span></span>
 											</div>
-											<p>In Stock! Ready for delivery or store pickup</p>
+											<p><i class="fa fa-check"></i> In Stock! Ready for delivery or store pickup</p>
 										</div>
 									</div>
 								</div>
 								<div class="add-cart">
 									<div class="add-cart--wrap">
-										<div class="input-qty"></div>
-										<div class="btn-add-cart"></div>
-										<div class="wishlist"></div>
+										<div class="quantity">
+											<div class="quantity-wrap">
+												<button><i class="fa fa-minus"></i></button>
+												<input type="number" name="product-qty" disabled value="1">
+												<button><i class="fa fa-plus"></i></button>
+											</div>
+										</div>
+										<div class="btn-add-cart">
+											<a href="">Add to cart <img src="../images/icon-cart-white.png"></a>
+										</div>
+										<div class="wishlist">
+											<div class="wishlish-wrap">
+												<a href=""><img src="../images/icon-heart.png"></a>
+												<a href=""><img src="../images/icon-copy.png"></a>
+											</div>
+										</div>
 									</div>
 									<div class="payment-imgs">
 										<ul>
-											<li><img src="../images/" alt=""></li>
-											<li><img src="../images/" alt=""></li>
-											<li><img src="../images/" alt=""></li>
-											<li><img src="../images/" alt=""></li>
+											<li><img src="../images/payment-icon-afterpay-b.png" alt=""></li>
+											<li><img src="../images/payment-icon-zip-b.png" alt=""></li>
+											<li><img src="../images/payment-icon-paypal-b.png" alt=""></li>
+											<li><img src="../images/payment-icon-klarma-b.png" alt=""></li>
 										</ul>
 									</div>
 									<div class="key-feature">
@@ -955,6 +955,27 @@
 						</div>
 					</div>
 				</div>
+			</section>
+			<section class="recommend-product">
+				<div class="container">
+					<div class="recommend-product--wrap">
+						<div class="recommend-product--slider">
+							<h3 class="slider-title">You Might Also Like</h3>
+							<div class="recommend-slider--wrap">
+								<div class="slider-item">
+									<div class="slider-item--wrap">
+										<img src="../images/recommend-item.png">
+									</div>
+								</div>
+								<div class="slider-item">
+									<div class="slider-item--wrap">
+										<img src="../images/recommend-item.png">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>		
 			</section>
 		</main>
 		<!--end main-->

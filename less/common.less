@@ -119,3 +119,30 @@ body {
 		}
 	}
 }
+.select-box-custom {
+	position: relative;
+	select {
+		padding: 10px 60px 10px 15px;
+		border-radius: 5px;
+		border: solid 1px #ddd;
+		background-color: #fff;
+		font-size: var(--font-primary);
+		color: var(--color-primary);
+		font-family: var(--font-OpenSans);
+		line-height: 1.35em;
+	}
+	.icon-select {
+		position: absolute;
+		top: 50%;
+		right: 15px;
+		font-size: 11px;
+		line-height: 0.875em;
+		color: #212121;
+		transform: translateY(-50%);
+	}
+	@media(min-width: 1440px) {
+		select {
+			padding: 10px 53px 10px 15px;
+		}
+	}
+}
