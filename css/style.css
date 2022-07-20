@@ -3015,7 +3015,7 @@ body {
   background-color: #fff;
 }
 @media (min-width: 768px) {
-  .recommend-product .recommend-slider--wrap {
+  .recommend-product .recommend-slider {
     display: flex;
     align-items: center;
     justify-content: space-between;
