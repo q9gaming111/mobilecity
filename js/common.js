@@ -79,12 +79,34 @@ const handleNavEvent = function() {
 		body.toggleClass('open-search');
 	})
 }
+
+const handleTabSrcoll = function() {
+	const tabScroll = $('.product-tab [data-scroll]');
+	const headerHeight = $('header').outerHeight();
+
+	if(!tabScroll) return
+
+	for(let tab of tabScroll) {
+		tab.addEventListener('click', function(e) {
+			e.preventDefault();
+
+			const _self = this
+			const scrollContent = _self.dataset.scroll
+			const scrollToElm = document.querySelector(`[data-scroll-content="${scrollContent}"]`)
+
+			scrollToElm.scrollIntoView({behavior: 'smooth', inline: 'end'})
+		})
+	}
+	
+}
+
 const initial = function() {
 	// excute function here
 	handleNavEvent();
 	handCollapseItem();
 	initBannerSlider();
 	initBlogSlider();
+	handleTabSrcoll();
 }
 
 document.addEventListener('DOMContentLoaded', function(){

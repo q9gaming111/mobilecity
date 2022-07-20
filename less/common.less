@@ -13,6 +13,17 @@
 		--font-bannerTitle: 40px;
 	}
 }
+
+html {
+	// scroll-behavior: smooth;
+	// -webkit-scroll-behavior: smooth;
+	* {
+		scroll-margin-top: 85px;
+		@media(min-width: 1300px) {
+			scroll-margin-top: 135px;
+		}
+	}
+}
 body {
 	font-size: var(--font-primary);
 	font-family: var(--font-Yantramanav);
