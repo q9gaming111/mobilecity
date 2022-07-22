@@ -2,6 +2,7 @@
 :root {
 	--font-OpenSans: 'Open Sans', sans-serif;
 	--font-Yantramanav: 'Yantramanav', sans-serif;
+	--font-Sarabun: 'Sarabun', sans-serif;
 	--color-red: #da2128;
 	--color-primary: #111111;
 	--font-title: 22px;
@@ -57,6 +58,7 @@ body {
 	}
 }
 .btn-primary {
+	position: relative;
 	display: inline-block;
 	min-width: 170px;
 	padding: 10px 5px;
@@ -67,10 +69,15 @@ body {
   	background-color: var(--color-red);
   	text-align: center;
   	font-weight: 300;
+  	transition: all 0.3s ease-out;
 	&.transparent {
 		background-color: transparent;
 		border: 1px solid var(--color-red);
 		color: var(--color-red);
+		&:hover {
+			color: #fff;
+			background-color: var(--color-red);
+		}
 	}
 }
 .section-title {

@@ -44,6 +44,8 @@ const initBlogSlider = function(){
 const handCollapseItem = function(){
 	const collapseBtn = $('[collapse-content] [collapse-btn]');
 
+	if(collapseBtn.length < 1) return
+
 	collapseBtn.on('click', function(e){
 		e.preventDefault();
 
@@ -51,6 +53,7 @@ const handCollapseItem = function(){
 		const collapseItemActive = _this.closest('[collapse-item]');
 
 		collapseItemActive.toggleClass('active')
+		console.log('321')
 	})
 }
 const handleNavEvent = function() {
@@ -81,10 +84,10 @@ const handleNavEvent = function() {
 }
 
 const handleTabSrcoll = function() {
-	const tabScroll = $('.product-tab [data-scroll]');
+	const tabScroll = document.querySelectorAll('.product-tab [data-scroll]');
 	const headerHeight = $('header').outerHeight();
 
-	if(!tabScroll) return
+	if(tabScroll.length < 1) return
 
 	for(let tab of tabScroll) {
 		tab.addEventListener('click', function(e) {
@@ -100,6 +103,26 @@ const handleTabSrcoll = function() {
 	
 }
 
+const handleTriggerTabFAQ = function() {
+	const triggerTabs = $('.customer-service--tab ul li');
+	const triggerItems = $('.customer-service .cs-item');
+
+	if(triggerTabs.length < 1) return
+
+	triggerTabs.on('click', function(e){
+		e.preventDefault();
+
+		const _self = $(this);
+		const dataTrigger = _self.data('trigger');
+		const triggerEl = $(`.cs-item--${dataTrigger}`);
+
+		triggerItems.removeClass('active');
+		triggerTabs.removeClass('active-item');
+		triggerEl.addClass('active');
+		_self.addClass('active-item');
+	})
+}
+
 const initial = function() {
 	// excute function here
 	handleNavEvent();
@@ -107,6 +130,7 @@ const initial = function() {
 	initBannerSlider();
 	initBlogSlider();
 	handleTabSrcoll();
+	handleTriggerTabFAQ();
 }
 
 document.addEventListener('DOMContentLoaded', function(){
