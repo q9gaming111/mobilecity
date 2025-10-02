@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Layout - Hướng dẫn cơ bản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        .example {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Ví dụ 1: Grid cơ bản */
+        .basic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 100px 100px;
+            gap: 10px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .grid-item {
+            background-color: #007bff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        /* Ví dụ 2: Grid với các kích thước khác nhau */
+        .advanced-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 15px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .grid-item:nth-child(1) {
+            background-color: #28a745;
+        }
+        
+        .grid-item:nth-child(2) {
+            background-color: #ffc107;
+            color: #333;
+        }
+        
+        .grid-item:nth-child(3) {
+            background-color: #dc3545;
+        }
+        
+        .grid-item:nth-child(4) {
+            background-color: #6f42c1;
+        }
+        
+        .grid-item:nth-child(5) {
+            background-color: #fd7e14;
+        }
+        
+        .grid-item:nth-child(6) {
+            background-color: #20c997;
+        }
+        
+        /* Ví dụ 3: Grid với named areas */
+        .layout-grid {
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "sidebar main main"
+                "footer footer footer";
+            grid-template-columns: 200px 1fr 1fr;
+            grid-template-rows: 80px 1fr 60px;
+            gap: 10px;
+            height: 400px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .header {
+            grid-area: header;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #6c757d;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .main {
+            grid-area: main;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid #dee2e6;
+        }
+        
+        .footer {
+            grid-area: footer;
+            background-color: #495057;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 CSS Grid Layout - Hướng dẫn từ cơ bản đến nâng cao</h1>
+        
+        <div class="example">
+            <h2>1. Grid cơ bản - display: grid</h2>
+            <p>Đây là ví dụ đơn giản nhất của CSS Grid:</p>
+            <div class="code-block">
+.container {<br>
+&nbsp;&nbsp;display: <span class="highlight">grid</span>;<br>
+&nbsp;&nbsp;grid-template-columns: 1fr 1fr 1fr;<br>
+&nbsp;&nbsp;grid-template-rows: 100px 100px;<br>
+&nbsp;&nbsp;gap: 10px;<br>
+}
+            </div>
+            <div class="basic-grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>2. Grid với các kích thước khác nhau</h2>
+            <p>Cột đầu tiên chiếm 2 phần, các cột còn lại chiếm 1 phần:</p>
+            <div class="code-block">
+.advanced-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">2fr 1fr 1fr</span>;<br>
+&nbsp;&nbsp;grid-template-rows: auto auto;<br>
+&nbsp;&nbsp;gap: 15px;<br>
+}
+            </div>
+            <div class="advanced-grid">
+                <div class="grid-item">Cột rộng (2fr)</div>
+                <div class="grid-item">Cột hẹp</div>
+                <div class="grid-item">Cột hẹp</div>
+                <div class="grid-item">Hàng 2</div>
+                <div class="grid-item">Hàng 2</div>
+                <div class="grid-item">Hàng 2</div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>3. Grid với Named Areas (Vùng đặt tên)</h2>
+            <p>Tạo layout trang web với các vùng có tên:</p>
+            <div class="code-block">
+.layout-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-areas: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;"header header header"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"sidebar main main"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"footer footer footer";<br>
+&nbsp;&nbsp;grid-template-columns: 200px 1fr 1fr;<br>
+&nbsp;&nbsp;grid-template-rows: 80px 1fr 60px;<br>
+&nbsp;&nbsp;gap: 10px;<br>
+}<br><br>
+.header { grid-area: <span class="highlight">header</span>; }<br>
+.sidebar { grid-area: <span class="highlight">sidebar</span>; }<br>
+.main { grid-area: <span class="highlight">main</span>; }<br>
+.footer { grid-area: <span class="highlight">footer</span>; }
+            </div>
+            <div class="layout-grid">
+                <div class="header">Header</div>
+                <div class="sidebar">Sidebar</div>
+                <div class="main">Main Content</div>
+                <div class="footer">Footer</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

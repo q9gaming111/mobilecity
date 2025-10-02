@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Properties - Thuộc tính chi tiết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #666;
+            margin-top: 25px;
+        }
+        
+        .example {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .property-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .property-table th,
+        .property-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .property-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .property-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Ví dụ minmax */
+        .minmax-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .minmax-item {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* Ví dụ auto-fill vs auto-fit */
+        .auto-fill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .auto-fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .auto-item {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* Ví dụ justify và align */
+        .justify-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(2, 100px);
+            gap: 10px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            height: 250px;
+            margin: 10px 0;
+        }
+        
+        .justify-item {
+            background-color: #dc3545;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .justify-start { justify-content: start; }
+        .justify-center { justify-content: center; }
+        .justify-end { justify-content: end; }
+        .justify-space-between { justify-content: space-between; }
+        .justify-space-around { justify-content: space-around; }
+        .justify-space-evenly { justify-content: space-evenly; }
+        
+        .align-start { align-content: start; }
+        .align-center { align-content: center; }
+        .align-end { align-content: end; }
+        .align-space-between { align-content: space-between; }
+        .align-space-around { align-content: space-around; }
+        .align-space-evenly { align-content: space-evenly; }
+        
+        /* Ví dụ grid item properties */
+        .item-properties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .item-properties-item {
+            background-color: #6f42c1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .span-columns {
+            grid-column: span 2;
+            background-color: #fd7e14 !important;
+        }
+        
+        .span-rows {
+            grid-row: span 2;
+            background-color: #20c997 !important;
+        }
+        
+        .span-both {
+            grid-column: span 2;
+            grid-row: span 2;
+            background-color: #e83e8c !important;
+        }
+        
+        .specific-position {
+            grid-column: 2 / 4;
+            grid-row: 2 / 4;
+            background-color: #6c757d !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 CSS Grid Properties - Thuộc tính chi tiết</h1>
+        
+        <div class="example">
+            <h2>📋 Thuộc tính Container (Grid Container)</h2>
+            
+            <h3>1. Thuộc tính cơ bản</h3>
+            <table class="property-table">
+                <tr>
+                    <th>Thuộc tính</th>
+                    <th>Mô tả</th>
+                    <th>Ví dụ</th>
+                </tr>
+                <tr>
+                    <td><code>display</code></td>
+                    <td>Kích hoạt Grid Layout</td>
+                    <td><code>display: grid;</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-template-columns</code></td>
+                    <td>Định nghĩa số cột và kích thước</td>
+                    <td><code>grid-template-columns: 1fr 2fr 1fr;</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-template-rows</code></td>
+                    <td>Định nghĩa số hàng và kích thước</td>
+                    <td><code>grid-template-rows: 100px auto 200px;</code></td>
+                </tr>
+                <tr>
+                    <td><code>gap</code></td>
+                    <td>Khoảng cách giữa các grid items</td>
+                    <td><code>gap: 20px;</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-gap</code></td>
+                    <td>Khoảng cách (cách viết cũ)</td>
+                    <td><code>grid-gap: 20px;</code></td>
+                </tr>
+            </table>
+            
+            <h3>2. Đơn vị đo trong Grid</h3>
+            <div class="code-block">
+/* Các đơn vị đo phổ biến */<br>
+grid-template-columns: <span class="highlight">200px</span>;           /* Pixel cố định */<br>
+grid-template-columns: <span class="highlight">1fr 2fr 1fr</span>;    /* Fractional units */<br>
+grid-template-columns: <span class="highlight">auto</span>;           /* Tự động điều chỉnh */<br>
+grid-template-columns: <span class="highlight">minmax(200px, 1fr)</span>; /* Min/Max */<br>
+grid-template-columns: <span class="highlight">repeat(3, 1fr)</span>; /* Lặp lại */
+            </div>
+            
+            <h3>3. Ví dụ minmax() và repeat()</h3>
+            <p><strong>minmax():</strong> Định nghĩa kích thước tối thiểu và tối đa</p>
+            <div class="code-block">
+.minmax-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(auto-fit, minmax(200px, 1fr))</span>;<br>
+&nbsp;&nbsp;gap: 15px;<br>
+}
+            </div>
+            <div class="minmax-grid">
+                <div class="minmax-item">Item 1</div>
+                <div class="minmax-item">Item 2</div>
+                <div class="minmax-item">Item 3</div>
+                <div class="minmax-item">Item 4</div>
+                <div class="minmax-item">Item 5</div>
+            </div>
+            
+            <h3>4. auto-fill vs auto-fit</h3>
+            <p><strong>auto-fill:</strong> Tạo nhiều cột rỗng nếu có không gian</p>
+            <div class="code-block">
+grid-template-columns: <span class="highlight">repeat(auto-fill, minmax(150px, 1fr))</span>;
+            </div>
+            <div class="auto-fill-grid">
+                <div class="auto-item">1</div>
+                <div class="auto-item">2</div>
+                <div class="auto-item">3</div>
+            </div>
+            
+            <p><strong>auto-fit:</strong> Chỉ tạo cột cho các items có nội dung</p>
+            <div class="code-block">
+grid-template-columns: <span class="highlight">repeat(auto-fit, minmax(150px, 1fr))</span>;
+            </div>
+            <div class="auto-fit-grid">
+                <div class="auto-item">1</div>
+                <div class="auto-item">2</div>
+                <div class="auto-item">3</div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>🎯 Thuộc tính Alignment (Căn chỉnh)</h2>
+            
+            <h3>1. justify-content (Căn chỉnh theo chiều ngang)</h3>
+            <div class="code-block">
+.justify-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: repeat(3, 100px);<br>
+&nbsp;&nbsp;grid-template-rows: repeat(2, 100px);<br>
+&nbsp;&nbsp;gap: 10px;<br>
+&nbsp;&nbsp;<span class="highlight">justify-content: center;</span><br>
+}
+            </div>
+            
+            <p><strong>justify-content: start</strong></p>
+            <div class="justify-grid justify-start">
+                <div class="justify-item">1</div>
+                <div class="justify-item">2</div>
+                <div class="justify-item">3</div>
+                <div class="justify-item">4</div>
+                <div class="justify-item">5</div>
+                <div class="justify-item">6</div>
+            </div>
+            
+            <p><strong>justify-content: center</strong></p>
+            <div class="justify-grid justify-center">
+                <div class="justify-item">1</div>
+                <div class="justify-item">2</div>
+                <div class="justify-item">3</div>
+                <div class="justify-item">4</div>
+                <div class="justify-item">5</div>
+                <div class="justify-item">6</div>
+            </div>
+            
+            <p><strong>justify-content: space-between</strong></p>
+            <div class="justify-grid justify-space-between">
+                <div class="justify-item">1</div>
+                <div class="justify-item">2</div>
+                <div class="justify-item">3</div>
+                <div class="justify-item">4</div>
+                <div class="justify-item">5</div>
+                <div class="justify-item">6</div>
+            </div>
+            
+            <h3>2. align-content (Căn chỉnh theo chiều dọc)</h3>
+            <table class="property-table">
+                <tr>
+                    <th>Giá trị</th>
+                    <th>Mô tả</th>
+                </tr>
+                <tr>
+                    <td><code>start</code></td>
+                    <td>Căn về đầu</td>
+                </tr>
+                <tr>
+                    <td><code>center</code></td>
+                    <td>Căn giữa</td>
+                </tr>
+                <tr>
+                    <td><code>end</code></td>
+                    <td>Căn về cuối</td>
+                </tr>
+                <tr>
+                    <td><code>space-between</code></td>
+                    <td>Phân bố đều, không có khoảng cách ở đầu/cuối</td>
+                </tr>
+                <tr>
+                    <td><code>space-around</code></td>
+                    <td>Phân bố đều với khoảng cách bằng nhau</td>
+                </tr>
+                <tr>
+                    <td><code>space-evenly</code></td>
+                    <td>Phân bố đều với khoảng cách hoàn toàn bằng nhau</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="example">
+            <h2>📦 Thuộc tính Grid Items</h2>
+            
+            <h3>1. grid-column và grid-row</h3>
+            <div class="code-block">
+/* Span qua nhiều cột/hàng */<br>
+.item {<br>
+&nbsp;&nbsp;<span class="highlight">grid-column: span 2;</span>  /* Chiếm 2 cột */<br>
+&nbsp;&nbsp;<span class="highlight">grid-row: span 2;</span>     /* Chiếm 2 hàng */<br>
+}<br><br>
+/* Định vị cụ thể */<br>
+.item {<br>
+&nbsp;&nbsp;<span class="highlight">grid-column: 2 / 4;</span>   /* Từ cột 2 đến cột 4 */<br>
+&nbsp;&nbsp;<span class="highlight">grid-row: 1 / 3;</span>     /* Từ hàng 1 đến hàng 3 */<br>
+}
+            </div>
+            
+            <div class="item-properties-grid">
+                <div class="item-properties-item">1</div>
+                <div class="item-properties-item span-columns">2 (span 2 cols)</div>
+                <div class="item-properties-item">3</div>
+                <div class="item-properties-item span-rows">4 (span 2 rows)</div>
+                <div class="item-properties-item">5</div>
+                <div class="item-properties-item">6</div>
+                <div class="item-properties-item span-both">7 (span 2x2)</div>
+                <div class="item-properties-item">8</div>
+                <div class="item-properties-item">9</div>
+                <div class="item-properties-item">10</div>
+                <div class="item-properties-item">11</div>
+                <div class="item-properties-item specific-position">12 (pos 2-4, 2-4)</div>
+            </div>
+            
+            <h3>2. Thuộc tính căn chỉnh cho items</h3>
+            <table class="property-table">
+                <tr>
+                    <th>Thuộc tính</th>
+                    <th>Mô tả</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td><code>justify-self</code></td>
+                    <td>Căn chỉnh item theo chiều ngang</td>
+                    <td>start, center, end, stretch</td>
+                </tr>
+                <tr>
+                    <td><code>align-self</code></td>
+                    <td>Căn chỉnh item theo chiều dọc</td>
+                    <td>start, center, end, stretch</td>
+                </tr>
+                <tr>
+                    <td><code>place-self</code></td>
+                    <td>Viết tắt của justify-self và align-self</td>
+                    <td>center, start end, etc.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="example">
+            <h2>🎨 Named Grid Lines (Đường lưới có tên)</h2>
+            <div class="code-block">
+.named-lines-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">[start] 1fr [middle] 1fr [end]</span>;<br>
+&nbsp;&nbsp;grid-template-rows: <span class="highlight">[top] 100px [center] 100px [bottom]</span>;<br>
+}<br><br>
+.item {<br>
+&nbsp;&nbsp;grid-column: <span class="highlight">start / end</span>;<br>
+&nbsp;&nbsp;grid-row: <span class="highlight">top / bottom</span>;<br>
+}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

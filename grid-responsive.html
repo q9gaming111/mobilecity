@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Responsive - Layout thích ứng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .example {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .media-query {
+            background-color: #e7f3ff;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        /* Ví dụ 1: Mobile First Approach */
+        .mobile-first-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .mobile-first-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) {
+            .mobile-first-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .mobile-first-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+            .mobile-first-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Ví dụ 2: Auto-fit với minmax */
+        .auto-fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .auto-fit-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .auto-fit-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .auto-fit-item p {
+            color: #666;
+        }
+        
+        /* Ví dụ 3: Responsive Navigation */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            background: #343a40;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .nav-item {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background: #0056b3;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Ví dụ 4: Responsive Blog Layout */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .blog-main {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .blog-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .blog-main h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .blog-main p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .blog-sidebar h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .blog-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .blog-sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-sidebar li:last-child {
+            border-bottom: none;
+        }
+        
+        @media (min-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        
+        /* Ví dụ 5: Responsive Dashboard */
+        .responsive-dashboard {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto auto;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .dashboard-sidebar {
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .dashboard-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) {
+            .responsive-dashboard {
+                grid-template-columns: 200px 1fr;
+                grid-template-rows: auto 1fr auto;
+                grid-template-areas: 
+                    "header header"
+                    "sidebar content"
+                    "stats stats";
+            }
+            
+            .dashboard-header {
+                grid-area: header;
+            }
+            
+            .dashboard-sidebar {
+                grid-area: sidebar;
+            }
+            
+            .dashboard-content {
+                grid-area: content;
+            }
+            
+            .dashboard-stats {
+                grid-area: stats;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .responsive-dashboard {
+                grid-template-columns: 250px 1fr;
+                grid-template-rows: auto 1fr;
+                grid-template-areas: 
+                    "header header"
+                    "sidebar content";
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Ví dụ 6: Responsive Card Grid */
+        .responsive-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-image {
+            height: 150px;
+            background: linear-gradient(45deg, #007bff, #28a745);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-text {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .card-button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .card-button:hover {
+            background: #0056b3;
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) {
+            .responsive-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .responsive-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+            .responsive-cards {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Ví dụ 7: Container Queries (Modern CSS) */
+        .container-query-demo {
+            container-type: inline-size;
+            margin: 20px 0;
+        }
+        
+        .container-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .container-item {
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        @container (min-width: 400px) {
+            .container-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @container (min-width: 600px) {
+            .container-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Responsive breakpoint indicator */
+        .breakpoint-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 767px) {
+            .breakpoint-indicator::after {
+                content: "Mobile";
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .breakpoint-indicator::after {
+                content: "Tablet";
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .breakpoint-indicator::after {
+                content: "Desktop";
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-indicator"></div>
+    
+    <div class="container">
+        <h1>📱 CSS Grid Responsive - Layout thích ứng</h1>
+        
+        <div class="example">
+            <h2>1. 🎯 Mobile First Approach</h2>
+            <p>Bắt đầu với mobile và mở rộng lên các màn hình lớn hơn:</p>
+            <div class="code-block">
+/* Mobile First - Mặc định 1 cột */<br>
+.mobile-first-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+}<br><br>
+/* Tablet - 768px+ */<br>
+<span class="media-query">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;.mobile-first-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(2, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+/* Desktop - 1024px+ */<br>
+<span class="media-query">@media (min-width: 1024px)</span> {<br>
+&nbsp;&nbsp;.mobile-first-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(3, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="mobile-first-grid">
+                <div class="mobile-first-item">Item 1</div>
+                <div class="mobile-first-item">Item 2</div>
+                <div class="mobile-first-item">Item 3</div>
+                <div class="mobile-first-item">Item 4</div>
+                <div class="mobile-first-item">Item 5</div>
+                <div class="mobile-first-item">Item 6</div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>2. 🔄 Auto-fit với minmax</h2>
+            <p>Tự động điều chỉnh số cột dựa trên kích thước màn hình:</p>
+            <div class="code-block">
+.auto-fit-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(auto-fit, minmax(250px, 1fr))</span>;<br>
+&nbsp;&nbsp;gap: 20px;<br>
+}
+            </div>
+            <div class="auto-fit-grid">
+                <div class="auto-fit-item">
+                    <h3>Feature 1</h3>
+                    <p>Responsive design with auto-fit and minmax functions.</p>
+                </div>
+                <div class="auto-fit-item">
+                    <h3>Feature 2</h3>
+                    <p>Automatically adjusts number of columns based on available space.</p>
+                </div>
+                <div class="auto-fit-item">
+                    <h3>Feature 3</h3>
+                    <p>No media queries needed for basic responsive behavior.</p>
+                </div>
+                <div class="auto-fit-item">
+                    <h3>Feature 4</h3>
+                    <p>Perfect for card layouts and content grids.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>3. 🧭 Responsive Navigation</h2>
+            <p>Navigation chuyển từ dọc sang ngang trên tablet:</p>
+            <div class="code-block">
+/* Mobile - Navigation dọc */<br>
+.nav-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+}<br><br>
+/* Tablet+ - Navigation ngang */<br>
+<span class="media-query">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;.nav-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(4, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="nav-grid">
+                <a href="#" class="nav-item">🏠 Home</a>
+                <a href="#" class="nav-item">📊 About</a>
+                <a href="#" class="nav-item">📞 Contact</a>
+                <a href="#" class="nav-item">⚙️ Settings</a>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>4. 📝 Responsive Blog Layout</h2>
+            <p>Layout blog với sidebar trên desktop:</p>
+            <div class="code-block">
+/* Mobile - Single column */<br>
+.blog-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+}<br><br>
+/* Tablet+ - Main content + Sidebar */<br>
+<span class="media-query">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;.blog-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">2fr 1fr</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="blog-grid">
+                <div class="blog-main">
+                    <h3>Main Article</h3>
+                    <p>Đây là nội dung chính của bài viết. Trên mobile, sidebar sẽ hiển thị bên dưới main content. Trên tablet và desktop, sidebar sẽ hiển thị bên cạnh.</p>
+                    <p>CSS Grid giúp tạo layout responsive một cách dễ dàng và linh hoạt. Bạn có thể điều chỉnh tỷ lệ giữa các cột bằng cách thay đổi giá trị fr.</p>
+                </div>
+                <div class="blog-sidebar">
+                    <h4>Recent Posts</h4>
+                    <ul>
+                        <li>📝 CSS Grid Basics</li>
+                        <li>🎨 Flexbox vs Grid</li>
+                        <li>📱 Responsive Design</li>
+                        <li>⚡ Performance Tips</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>5. 📊 Responsive Dashboard</h2>
+            <p>Dashboard với layout khác nhau cho từng breakpoint:</p>
+            <div class="code-block">
+/* Mobile - Single column stack */<br>
+.responsive-dashboard {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+&nbsp;&nbsp;grid-template-rows: auto auto auto auto;<br>
+}<br><br>
+/* Tablet - Sidebar + Content */<br>
+<span class="media-query">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;.responsive-dashboard {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 200px 1fr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-areas: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"header header"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sidebar content"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stats stats";<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+/* Desktop - Full layout */<br>
+<span class="media-query">@media (min-width: 1024px)</span> {<br>
+&nbsp;&nbsp;.dashboard-stats {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(4, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="responsive-dashboard">
+                <div class="dashboard-header">📈 Responsive Dashboard</div>
+                <div class="dashboard-sidebar">
+                    <h4>Menu</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">🏠 Dashboard</li>
+                        <li style="padding: 8px 0;">📊 Analytics</li>
+                        <li style="padding: 8px 0;">👥 Users</li>
+                        <li style="padding: 8px 0;">⚙️ Settings</li>
+                    </ul>
+                </div>
+                <div class="dashboard-content">
+                    <h3>Main Content</h3>
+                    <p>Nội dung chính của dashboard. Layout sẽ thay đổi tùy theo kích thước màn hình.</p>
+                </div>
+                <div class="dashboard-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1,234</div>
+                        <div class="stat-label">Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5,678</div>
+                        <div class="stat-label">Views</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$12K</div>
+                        <div class="stat-label">Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>6. 🎴 Responsive Card Grid</h2>
+            <p>Grid card với số cột thay đổi theo breakpoint:</p>
+            <div class="code-block">
+/* Mobile - 1 column */<br>
+.responsive-cards {<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+}<br><br>
+/* Tablet - 2 columns */<br>
+<span class="media-query">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;.responsive-cards {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(2, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+/* Desktop - 3 columns */<br>
+<span class="media-query">@media (min-width: 1024px)</span> {<br>
+&nbsp;&nbsp;.responsive-cards {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(3, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+/* Large Desktop - 4 columns */<br>
+<span class="media-query">@media (min-width: 1200px)</span> {<br>
+&nbsp;&nbsp;.responsive-cards {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(4, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="responsive-cards">
+                <div class="card">
+                    <div class="card-image">🖼️</div>
+                    <div class="card-content">
+                        <div class="card-title">Card 1</div>
+                        <div class="card-text">Responsive card that adapts to different screen sizes.</div>
+                        <button class="card-button">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">📊</div>
+                    <div class="card-content">
+                        <div class="card-title">Card 2</div>
+                        <div class="card-text">Grid layout automatically adjusts number of columns.</div>
+                        <button class="card-button">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">⚡</div>
+                    <div class="card-content">
+                        <div class="card-title">Card 3</div>
+                        <div class="card-text">Perfect for modern web applications and dashboards.</div>
+                        <button class="card-button">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">🎨</div>
+                    <div class="card-content">
+                        <div class="card-title">Card 4</div>
+                        <div class="card-text">CSS Grid provides powerful layout capabilities.</div>
+                        <button class="card-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>7. 🆕 Container Queries (Modern CSS)</h2>
+            <p>Container queries cho phép responsive dựa trên kích thước container thay vì viewport:</p>
+            <div class="code-block">
+.container-query-demo {<br>
+&nbsp;&nbsp;<span class="highlight">container-type: inline-size</span>;<br>
+}<br><br>
+.container-grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;<br>
+}<br><br>
+<span class="media-query">@container (min-width: 400px)</span> {<br>
+&nbsp;&nbsp;.container-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(2, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+<span class="media-query">@container (min-width: 600px)</span> {<br>
+&nbsp;&nbsp;.container-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(3, 1fr)</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <div class="container-query-demo">
+                <div class="container-grid">
+                    <div class="container-item">Item 1</div>
+                    <div class="container-item">Item 2</div>
+                    <div class="container-item">Item 3</div>
+                    <div class="container-item">Item 4</div>
+                    <div class="container-item">Item 5</div>
+                    <div class="container-item">Item 6</div>
+                </div>
+            </div>
+            <p><strong>Lưu ý:</strong> Container Queries là tính năng mới và có thể chưa được hỗ trợ đầy đủ trên tất cả trình duyệt.</p>
+        </div>
+        
+        <div class="example">
+            <h2>📋 Best Practices cho Responsive Grid</h2>
+            <div class="code-block">
+/* 1. Mobile First Approach */<br>
+.grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">1fr</span>;  /* Mobile default */<br>
+}<br><br>
+/* 2. Sử dụng minmax() cho flexibility */<br>
+.grid {<br>
+&nbsp;&nbsp;grid-template-columns: <span class="highlight">repeat(auto-fit, minmax(250px, 1fr))</span>;<br>
+}<br><br>
+/* 3. Breakpoints phổ biến */<br>
+<span class="media-query">@media (min-width: 768px)</span>  { /* Tablet */ }<br>
+<span class="media-query">@media (min-width: 1024px)</span> { /* Desktop */ }<br>
+<span class="media-query">@media (min-width: 1200px)</span> { /* Large Desktop */ }<br><br>
+/* 4. Sử dụng gap thay vì margin */<br>
+.grid {<br>
+&nbsp;&nbsp;<span class="highlight">gap: 20px</span>;  /* Thay vì margin */<br>
+}<br><br>
+/* 5. Named areas cho complex layouts */<br>
+.layout {<br>
+&nbsp;&nbsp;grid-template-areas: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;"header header"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"sidebar main"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"footer footer";<br>
+}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
